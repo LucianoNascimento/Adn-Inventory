@@ -11,6 +11,10 @@
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
 });
+
+Route::resource('/account','Account');
+Route::resource('/customer','CustomerController');*/
+Route::get('/','adminController@index');
