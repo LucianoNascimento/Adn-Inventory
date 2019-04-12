@@ -11,10 +11,5 @@
 |
 */
 
-/*Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::resource('/account','Account');
-Route::resource('/customer','CustomerController');*/
-Route::get('/','adminController@index');
+Route::get('/','HomeCtrl@index');
+Route::resource('/category','CategoryCtrl');
