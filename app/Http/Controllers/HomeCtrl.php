@@ -6,10 +6,13 @@ use Illuminate\Http\Request;
 
 class HomeCtrl extends Controller
 {
+<<<<<<< HEAD
     public function __construct()
     {
         $this->middleware('auth');
     }
+=======
+>>>>>>> 763267dc7dfe36f97025aeff9ddd3147020b552a
 
     public function index()
     {

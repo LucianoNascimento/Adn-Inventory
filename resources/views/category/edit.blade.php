@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @extends('master.app')
 
 @section('cssScript')
@@ -106,3 +107,12 @@
     <script src="{{asset('admin/dist/js/demo.js')}}"></script>
     <!-- page script -->
 @endsection
+=======
+<?php
+/**
+ * Created by PhpStorm.
+ * User: ADN
+ * Date: 4/12/2019
+ * Time: 5:22 PM
+ */
+>>>>>>> 763267dc7dfe36f97025aeff9ddd3147020b552a

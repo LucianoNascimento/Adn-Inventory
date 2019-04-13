@@ -13,7 +13,10 @@
 
 Route::get('/','HomeCtrl@index');
 Route::resource('/category','CategoryCtrl');
+<<<<<<< HEAD
 
 Auth::routes();
 
 //Route::get('/home', 'HomeController@index')->name('home');
+=======
+>>>>>>> 763267dc7dfe36f97025aeff9ddd3147020b552a
