@@ -11,10 +11,9 @@
 |
 */
 
-/*Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/','HomeCtrl@index');
+Route::resource('/category','CategoryCtrl');
 
-Route::resource('/account','Account');
-Route::resource('/customer','CustomerController');*/
-Route::get('/','adminController@index');
+Auth::routes();
+
+//Route::get('/home', 'HomeController@index')->name('home');
