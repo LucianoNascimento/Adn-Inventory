@@ -1,4 +1,3 @@
-
 @extends('master.app')
 
 @section('cssScript')
@@ -35,7 +34,7 @@
                 <!-- general form elements -->
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Add Category</h3>
+                        <h3 class="box-title">Add Customer</h3>
                     </div>
 
                     @if ($errors->any())
@@ -50,19 +49,30 @@
                     @endif
                 <!-- /.box-header -->
                     <!-- form start -->
-                    {!! Form::open(['action' => ['CategoryCtrl@update', $result->id], 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
+                    {!! Form::open(['action' => 'CustomerController@store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
 
                     <div class="box-body">
                         <div class="form-group">
-                            {{Form::label('name', 'Category Name')}}
-                            {{Form::text('name', $result->name, ['class' => 'form-control', 'placeholder' => 'Category name'])}}
+                            {{Form::label('user_id', 'User ID')}}
+                            {{Form::number('user_id', '', ['class' => 'form-control', 'placeholder' => 'User ID'])}}
+                        </div>
+                        <div class="form-group">
+                            {{Form::label('name', 'Customer Name')}}
+                            {{Form::text('name', '', ['class' => 'form-control', 'placeholder' => 'Customer name'])}}
                         </div>
 
                         <div class="form-group">
-                            {{Form::label('label', 'Category Label')}}
-                            {{Form::text('label', $result->label, ['class' => 'form-control', 'placeholder' => 'Category Label'])}}
+                            {{Form::label('phone', 'Phone')}}
+                            {{Form::text('phone', '', ['class' => 'form-control', 'placeholder' => 'Phone'])}}
                         </div>
-
+                        <div class="form-group">
+                            {{Form::label('email', 'Email')}}
+                            {{Form::email('email', '', ['class' => 'form-control', 'placeholder' => 'Email'])}}
+                        </div>
+                        <div class="form-group">
+                            {{Form::label('address', 'Address')}}
+                            {{Form::text('address', '', ['class' => 'form-control', 'placeholder' => 'Address'])}}
+                        </div>
 
                         <div class="form-group">
                             {{Form::label('status', 'Status')}}
@@ -71,15 +81,18 @@
                             'active'=>'Active',
                             'deactive'=>'De-Active',
                            ],
-                             $result->status,
+                             null,
                              ['class' => 'form-control', 'placeholder' => 'Select Status'])}}
+                        </div>
+                        <div class="form-group">
+                            {{Form::label('amount', 'Amounnt')}}
+                            {{Form::number('amount', '', ['class' => 'form-control', 'placeholder' => 'Amount'])}}
                         </div>
                     </div>
                     <!-- /.box-body -->
 
                     <div class="box-footer">
-                        {{Form::hidden('_method', 'PUT')}}
-                        {{Form::submit('Submit', ['class' => 'btn btn-primary'])}}
+                        {{Form::submit('Submit', ['class' => 'btn btn-primary form-control'])}}
                     </div>
                     {!! Form::close() !!}
                 </div>
@@ -107,4 +120,3 @@
     <script src="{{asset('admin/dist/js/demo.js')}}"></script>
     <!-- page script -->
 @endsection
-

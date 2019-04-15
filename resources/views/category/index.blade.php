@@ -59,15 +59,11 @@
                                     <td>{{$result->label}}</td>
                                     <td>{{$result->status}}</td>
                                     <td>
-<<<<<<< HEAD
                                         <a href="/category/{{$result->id}}" class="btn btn-info btn-sm">Details</a>
                                         <a href="/category/{{$result->id}}/edit" class="btn btn-success btn-sm">Edit</a>
-                                        <a href="#">Delete</a>
-=======
-                                        <a href="#">Details</a>
-                                        <a href="#">Details</a>
-                                        <a href="#">Details</a>
->>>>>>> 763267dc7dfe36f97025aeff9ddd3147020b552a
+                                        <a href="delete/{{$result->id}}" class="btn btn-danger btn-sm">Delete</a>
+
+
                                     </td>
                                 </tr>
                             @endforeach

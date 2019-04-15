@@ -18,6 +18,7 @@ class CreatePurchesInvoicesTable extends Migration
             $table->bigInteger('user_id')->index();
             $table->string('invoice_number')->index();
             $table->bigInteger('supplier_id')->index();
+            $table->bigInteger('due_no');
             $table->timestamp('date');
             $table->double('discount',10,2);
             $table->double('discount_value',10,2);

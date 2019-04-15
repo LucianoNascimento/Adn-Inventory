@@ -13,10 +13,13 @@
 
 Route::get('/','HomeCtrl@index');
 Route::resource('/category','CategoryCtrl');
-<<<<<<< HEAD
+Route::resource('/customer','CustomerController');
+Route::resource('/product','ProductController');
+Route::resource('/expences','ExpencesController');
+Route::resource('/suppliers','SupplierController');
+Route::get('delete/{id}','CategoryCtrl@destroy');
+
 
 Auth::routes();
 
-//Route::get('/home', 'HomeController@index')->name('home');
-=======
->>>>>>> 763267dc7dfe36f97025aeff9ddd3147020b552a
+Route::get('/home', 'HomeController@index')->name('home');

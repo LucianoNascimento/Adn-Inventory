@@ -1,4 +1,3 @@
-
 @extends('master.app')
 
 @section('cssScript')
@@ -35,7 +34,7 @@
                 <!-- general form elements -->
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Add Category</h3>
+                        <h3 class="box-title">Add Product</h3>
                     </div>
 
                     @if ($errors->any())
@@ -50,20 +49,21 @@
                     @endif
                 <!-- /.box-header -->
                     <!-- form start -->
-                    {!! Form::open(['action' => ['CategoryCtrl@update', $result->id], 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
+                    {!! Form::open(['action' => 'ProductController@store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
 
                     <div class="box-body">
                         <div class="form-group">
-                            {{Form::label('name', 'Category Name')}}
-                            {{Form::text('name', $result->name, ['class' => 'form-control', 'placeholder' => 'Category name'])}}
+                            {{Form::label('product_name', 'Product Name')}}
+                            {{Form::text('product_name', '', ['class' => 'form-control', 'placeholder' => 'Product Name'])}}
                         </div>
-
                         <div class="form-group">
-                            {{Form::label('label', 'Category Label')}}
-                            {{Form::text('label', $result->label, ['class' => 'form-control', 'placeholder' => 'Category Label'])}}
+                            {{Form::label('supplier_id', 'Supplier ID')}}
+                            {{Form::text('supplier_id', '', ['class' => 'form-control', 'placeholder' => 'Supplier ID'])}}
                         </div>
-
-
+                        <div class="form-group">
+                            {{Form::label('cat_id', 'Cat ID')}}
+                            {{Form::text('cat_id', '', ['class' => 'form-control', 'placeholder' => 'Cat ID'])}}
+                        </div>
                         <div class="form-group">
                             {{Form::label('status', 'Status')}}
                             {{Form::select('status',
@@ -71,15 +71,40 @@
                             'active'=>'Active',
                             'deactive'=>'De-Active',
                            ],
-                             $result->status,
+                             null,
                              ['class' => 'form-control', 'placeholder' => 'Select Status'])}}
+                        </div>
+                        <div class="form-group">
+                            {{Form::label('user_id', 'User ID')}}
+                            {{Form::text('user_id', '', ['class' => 'form-control', 'placeholder' => 'User ID'])}}
+                        </div>
+
+                        <div class="form-group">
+                            {{Form::label('picture', 'Picture')}}
+                            {{Form::file('picture', '', ['class' => 'form-control', 'placeholder' => 'Picture'])}}
+                        </div>
+                        <div class="form-group">
+                            {{Form::label('alert_quantity', 'Alert Quantity')}}
+                            {{Form::number('alert_quantity', '', ['class' => 'form-control', 'placeholder' => 'Alert Quantity'])}}
+                        </div>
+                        <div class="form-group">
+                            {{Form::label('sale_price', 'Sale Price')}}
+                            {{Form::number('sale_price', '', ['class' => 'form-control', 'placeholder' => 'Sale price'])}}
+                        </div>
+                        <div class="form-group">
+                            {{Form::label('purches_price', 'Purches Price')}}
+                            {{Form::number('purches_price', '', ['class' => 'form-control', 'placeholder' => 'Purches price'])}}
+                        </div>
+
+                        <div class="form-group">
+                            {{Form::label('profit', 'Profit')}}
+                            {{Form::number('profit', '', ['class' => 'form-control', 'placeholder' => 'Profit'])}}
                         </div>
                     </div>
                     <!-- /.box-body -->
 
                     <div class="box-footer">
-                        {{Form::hidden('_method', 'PUT')}}
-                        {{Form::submit('Submit', ['class' => 'btn btn-primary'])}}
+                        {{Form::submit('Submit', ['class' => 'btn btn-primary form-control'])}}
                     </div>
                     {!! Form::close() !!}
                 </div>
@@ -107,4 +132,3 @@
     <script src="{{asset('admin/dist/js/demo.js')}}"></script>
     <!-- page script -->
 @endsection
-

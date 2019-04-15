@@ -8,9 +8,6 @@
     <link rel="stylesheet" href="{{asset('admin/bower_components/font-awesome/css/font-awesome.min.css')}}">
     <!-- Ionicons -->
     <link rel="stylesheet" href="{{asset('admin/bower_components/Ionicons/css/ionicons.min.css')}}">
-    <!-- DataTables -->
-    <link rel="stylesheet"
-          href="{{asset('admin/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css')}}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{asset('admin/dist/css/AdminLTE.min.css')}}">
     <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -33,41 +30,55 @@
     <!-- Main content -->
     <section class="content">
         <div class="row">
-            <div class="col-xs-12">
-                <div class="box">
-                    <div class="box-header">
-                        <h3 class="box-title">Category View</h3>
+            <div class="col-md-8 col-md-offset-2">
+                <!-- general form elements -->
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Update Expences</h3>
                     </div>
-                    <!-- /.box-header -->
+
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        <br/>
+                    @endif
+                <!-- /.box-header -->
+                    <!-- form start -->
+                    {!! Form::open(['action' => ['ExpencesController@update', $result->id ], 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
+
                     <div class="box-body">
-                        <table id="example1" class="table table-bordered table-striped">
-                            <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Label</th>
-                                <th>Status</th>
-                                <th>User ID</th>
-                                <th>Create At</th>
-                                <th>Update At</th>
-                            </tr>
-                            </thead>
-                            <tbody>
+                        <div class="form-group">
+                            {{Form::label('title', 'Title')}}
+                            {{Form::text('title', $result->title, ['class' => 'form-control', 'placeholder' => 'Title'])}}
+                        </div>
 
-                                <tr>
-                                    <td>{{$result->name}}</td>
-                                    <td>{{$result->label}}</td>
-                                    <td>{{$result->status}}</td>
-                                    <td>{{$result->user_id}}</td>
-                                    <td>{{$result->created_at}}</td>
-                                    <td>{{$result->updated_at}}</td>
+                        <div class="form-group">
+                            {{Form::label('user_id', 'User ID')}}
+                            {{Form::number('user_id', $result->user_id, ['class' => 'form-control', 'placeholder' => 'User ID'])}}
+                        </div>
+                        <div class="form-group">
+                            {{Form::label('purpose', 'Purpose')}}
+                            {{Form::text('purpose', $result->purpose, ['class' => 'form-control', 'placeholder' => 'Purpose'])}}
+                        </div>
+                        <div class="form-group">
+                            {{Form::label('amount', 'Amount')}}
+                            {{Form::text('amount', $result->amount, ['class' => 'form-control', 'placeholder' => 'Amount'])}}
+                        </div>
 
-                                </tr>
 
-                            </tbody>
-
-                        </table>
                     </div>
                     <!-- /.box-body -->
+
+                    <div class="box-footer">
+                        {{Form::hidden('_method', 'PUT')}}
+                        {{Form::submit('Submit', ['class' => 'btn btn-primary form-group'])}}
+                    </div>
+                    {!! Form::close() !!}
                 </div>
                 <!-- /.box -->
             </div>
@@ -85,11 +96,6 @@
     <script src="{{asset('admin/bower_components/jquery/dist/jquery.min.js')}}"></script>
     <!-- Bootstrap 3.3.7 -->
     <script src="{{asset('admin/bower_components/bootstrap/dist/js/bootstrap.min.js')}}"></script>
-    <!-- DataTables -->
-    <script src="{{asset('admin/bower_components/datatables.net/js/jquery.dataTables.min.js')}}"></script>
-    <script src="{{asset('admin/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script>
-    <!-- SlimScroll -->
-    <script src="{{asset('admin/bower_components/jquery-slimscroll/jquery.slimscroll.min.js')}}"></script>
     <!-- FastClick -->
     <script src="{{asset('admin/bower_components/fastclick/lib/fastclick.js')}}"></script>
     <!-- AdminLTE App -->
@@ -97,5 +103,4 @@
     <!-- AdminLTE for demo purposes -->
     <script src="{{asset('admin/dist/js/demo.js')}}"></script>
     <!-- page script -->
-
 @endsection

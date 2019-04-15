@@ -14,28 +14,36 @@ class ExpencesController extends Controller
      */
     public function index()
     {
-        //
+        $results = expences::all();
+        return view('expences.index')->with('results', $results);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
-        //
+        return view('expences.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required|unique:expences|max:50',
+            'purpose' => 'required',
+            'amount' => 'required'
+        ]);
+
+        $expence = new expences();
+
+        $expence->title = $request->title;
+        $expence->user_id = 1;
+        $expence->purpose = $request->purpose;
+        $expence->amount = $request->amount;
+
+        $expence->save();
+
+        return redirect('/expences');
+
     }
 
     /**
@@ -57,7 +65,8 @@ class ExpencesController extends Controller
      */
     public function edit(expences $expences)
     {
-        //
+        $result = expences::find($expences);
+        return view('expences.edit')->with('result', $result);
     }
 
     /**

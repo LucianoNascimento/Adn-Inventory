@@ -36,35 +36,51 @@
             <div class="col-xs-12">
                 <div class="box">
                     <div class="box-header">
-                        <h3 class="box-title">Category View</h3>
+                        <h3 class="box-title">Product List</h3>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
                             <tr>
-                                <th>Name</th>
-                                <th>Label</th>
+                                <th>SL No</th>
+                                <th>Product Name</th>
                                 <th>Status</th>
-                                <th>User ID</th>
-                                <th>Create At</th>
-                                <th>Update At</th>
+                                <th>Picture</th>
+                                <th>Alert_Quantity</th>
+                                <th>Sales Price</th>
+                                <th>Action</th>
                             </tr>
                             </thead>
                             <tbody>
 
+                            @foreach($results as $result)
                                 <tr>
-                                    <td>{{$result->name}}</td>
-                                    <td>{{$result->label}}</td>
+                                    <td>{{$result->id}}</td>
+                                    <td>{{$result->product_name}}</td>
                                     <td>{{$result->status}}</td>
-                                    <td>{{$result->user_id}}</td>
-                                    <td>{{$result->created_at}}</td>
-                                    <td>{{$result->updated_at}}</td>
-
+                                    <td>{{$result->picture}}</td>
+                                    <td>{{$result->alert_quantity}}</td>
+                                    <td>{{$result->sale_price}}</td>
+                                    <td>
+                                        <a href="/product/{{$result->id}}" class="btn btn-info btn-sm">Details</a>
+                                        <a href="/product/{{$result->id}}/edit" class="btn btn-success btn-sm">Edit</a>
+                                        <a href="#" class="btn btn-danger btn-sm">Delete</a>
+                                    </td>
                                 </tr>
-
+                            @endforeach
                             </tbody>
-
+                            <tfoot>
+                            <tr>
+                                <th>SL No</th>
+                                <th>Product Name</th>
+                                <th>Status</th>
+                                <th>Picture</th>
+                                <th>Alert_Quantity</th>
+                                <th>Sales Price</th>
+                                <th>Action</th>
+                            </tr>
+                            </tfoot>
                         </table>
                     </div>
                     <!-- /.box-body -->
@@ -97,5 +113,17 @@
     <!-- AdminLTE for demo purposes -->
     <script src="{{asset('admin/dist/js/demo.js')}}"></script>
     <!-- page script -->
-
+    <script>
+        $(function () {
+            $('#example1').DataTable();
+            $('#example2').DataTable({
+                'paging': true,
+                'lengthChange': false,
+                'searching': false,
+                'ordering': true,
+                'info': true,
+                'autoWidth': false
+            })
+        })
+    </script>
 @endsection
