@@ -14,7 +14,8 @@ class PurchesController extends Controller
      */
     public function index()
     {
-        //
+        $results = Purches::all();
+        return view('purches.index')->with('results', $results);
     }
 
     /**
@@ -24,7 +25,7 @@ class PurchesController extends Controller
      */
     public function create()
     {
-        //
+        return view('purches.create');
     }
 
     /**

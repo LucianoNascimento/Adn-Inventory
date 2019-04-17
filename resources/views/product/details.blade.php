@@ -1,7 +1,134 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: SHIMUL
- * Date: 4/13/2019
- * Time: 5:07 PM
- */
+@extends('master.app')
+
+@section('cssScript')
+
+    <!-- Bootstrap 3.3.7 -->
+    <link rel="stylesheet" href="{{asset('admin/bower_components/bootstrap/dist/css/bootstrap.min.css')}}">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="{{asset('admin/bower_components/font-awesome/css/font-awesome.min.css')}}">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="{{asset('admin/bower_components/Ionicons/css/ionicons.min.css')}}">
+    <!-- DataTables -->
+    <link rel="stylesheet"
+          href="{{asset('admin/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css')}}">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="{{asset('admin/dist/css/AdminLTE.min.css')}}">
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+         folder instead of downloading all of them to reduce the load. -->
+    <link rel="stylesheet" href="{{asset('admin/dist/css/skins/_all-skins.min.css')}}">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Google Font -->
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+@endsection
+
+@section('content')
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-8 col-xs-offset-2">
+                <div class="box">
+                    <div class="box-header">
+                        <h3 class="box-title">Product Details</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="col-lg-3 col-md-3">
+                                        <span class="text-left">
+                                <img src="{{ asset('storage/picture/'.$result->picture) }}" alt="no image"
+                                   class="img-responsive img-thumbnail">
+                                        </span>
+
+                    </div>
+                    {{--<img src="/picture/{{ $result->picture }}" height="30px" width="30px">--}}
+
+                    <div class="box-body">
+                        <table id="example1" class="table table-bordered table-striped">
+                            <thead class="box">
+                            <tr>
+                                <th>Product Name</th>
+                                <td>{{$result->product_name}}</td>
+                            </tr>
+                            <tr>
+                                <th>Supplier ID</th>
+                                <td>{{$result->supplier_id}}</td>
+                            </tr>
+                            <tr>
+                                <th>Cat ID</th>
+                                <td>{{$result->cat_id}}</td>
+                            </tr>
+                            <tr>
+                                <th>Status</th>
+                                <td>{{$result->status}}</td>
+                            </tr>
+                            <tr>
+                                <th>User ID</th>
+                                <td>{{$result->user_id}}</td>
+                            </tr>
+                            <tr>
+                                <th>Alert Quantity</th>
+                                <td>{{$result->alert_quantity}}</td>
+                            </tr>
+                            <tr>
+                                <th>Sale Price</th>
+                                <td>{{$result->sale_price}}</td>
+                            </tr>
+                            <tr>
+                                <th>Purches Price</th>
+                                <td>{{$result->purches_price}}</td>
+                            </tr>
+                            <tr>
+                                <th>Profit</th>
+                                <td>{{$result->profit}}</td>
+                            </tr>
+                            <tr>
+                                <th>Create At</th>
+                                <td>{{$result->created_at}}</td>
+                            </tr>
+                            <tr>
+                                <th>Update At</th>
+                                <td>{{$result->updated_at}}</td>
+                            </tr>
+                            </thead>
+
+
+                        </table>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </section>
+    <!-- /.content -->
+@endsection
+
+@section('jsScript')
+
+
+    <!-- jQuery 3 -->
+    <script src="{{asset('admin/bower_components/jquery/dist/jquery.min.js')}}"></script>
+    <!-- Bootstrap 3.3.7 -->
+    <script src="{{asset('admin/bower_components/bootstrap/dist/js/bootstrap.min.js')}}"></script>
+    <!-- DataTables -->
+    <script src="{{asset('admin/bower_components/datatables.net/js/jquery.dataTables.min.js')}}"></script>
+    <script src="{{asset('admin/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script>
+    <!-- SlimScroll -->
+    <script src="{{asset('admin/bower_components/jquery-slimscroll/jquery.slimscroll.min.js')}}"></script>
+    <!-- FastClick -->
+    <script src="{{asset('admin/bower_components/fastclick/lib/fastclick.js')}}"></script>
+    <!-- AdminLTE App -->
+    <script src="{{asset('admin/dist/js/adminlte.min.js')}}"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="{{asset('admin/dist/js/demo.js')}}"></script>
+    <!-- page script -->
+
+@endsection

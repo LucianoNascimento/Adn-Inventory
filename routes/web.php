@@ -17,7 +17,14 @@ Route::resource('/customer','CustomerController');
 Route::resource('/product','ProductController');
 Route::resource('/expences','ExpencesController');
 Route::resource('/suppliers','SupplierController');
-Route::get('delete/{id}','CategoryCtrl@destroy');
+Route::resource('/purches','PurchesController');
+
+
+/*Route::get('delete/{id}','CategoryCtrl@destroy');
+Route::get('delete/{id}','CustomerController@destroy');
+Route::get('delete/{id}','ProductController@destroy');
+Route::get('delete/{id}','SupplierController@destroy');
+Route::get('delete/{id}','ExpencesController@destroy');*/
 
 
 Auth::routes();

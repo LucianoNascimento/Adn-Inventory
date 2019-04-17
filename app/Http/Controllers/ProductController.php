@@ -37,10 +37,10 @@ class ProductController extends Controller
     {
         $request->validate([
             'product_name' => 'required|unique:products|max:35',
-            'supplier_id' => 'required|unique:products|max:10',
-            'cat_id' => 'required',
+           // 'supplier_id' => 'required|max:10',
+           // 'cat_id' => 'required',
             'status' => 'required',
-            'user_id' => 'required',
+           // 'user_id' => 'required',
             'alert_quantity' => 'required',
             'sale_price' => 'required',
             'purches_price' => 'required',
@@ -49,7 +49,6 @@ class ProductController extends Controller
 
         ]);
 
-        // Handle File Upload
         if($request->hasFile('picture')){
             // Get filename with the extension
             $filenameWithExt = $request->file('picture')->getClientOriginalName();
@@ -60,8 +59,9 @@ class ProductController extends Controller
             // Filename to store
             $fileNameToStore= $filename.'_'.time().'.'.$extension;
             // Upload Image
-            $path = $request->file('picture')->storeAs('public/img', $fileNameToStore);
-            //$path = $request->picture->store('public');
+            $path = $request->file('picture')->storeAs('public/picture', $fileNameToStore);
+
+
         } else {
             $fileNameToStore = 'noimage.jpg';
         }
@@ -70,10 +70,10 @@ class ProductController extends Controller
         $product= new Product();
 
         $product->product_name = $request->product_name;
-        $product->supplier_id = $request->supplier_id;
-        $product->cat_id = $request->cat_id;
+        $product->supplier_id = 1;
+        $product->cat_id = 1;
         $product->status = $request->status;
-        $product->user_id = $request->user_id;
+        $product->user_id = 1;
         $product->picture = $fileNameToStore;
         $product->alert_quantity = $request->alert_quantity;
         $product->sale_price = $request->sale_price;
@@ -95,7 +95,8 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        //
+        $result = Product::find($id);
+        return view('product.details')->with('result', $result);
     }
 
     /**
@@ -120,7 +121,6 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {
 
-        // Handle File Upload
         if($request->hasFile('picture')){
             // Get filename with the extension
             $filenameWithExt = $request->file('picture')->getClientOriginalName();
@@ -131,18 +131,17 @@ class ProductController extends Controller
             // Filename to store
             $fileNameToStore= $filename.'_'.time().'.'.$extension;
             // Upload Image
-            $path = $request->file('picture')->storeAs('public/img', $fileNameToStore);
-            //$path = $request->picture->store('public');
+            $path = $request->file('picture')->storeAs('public/picture', $fileNameToStore);
         } else {
             $fileNameToStore = 'noimage.jpg';
         }
 
         $product= Product::find($id);
         $product->product_name = $request->product_name;
-        $product->supplier_id = $request->supplier_id;
-        $product->cat_id = $request->cat_id;
+        $product->supplier_id = 1;
+        $product->cat_id = 1;
         $product->status = $request->status;
-        $product->user_id = $request->user_id;
+        $product->user_id = 1;
         $product->picture = $fileNameToStore;
         $product->alert_quantity = $request->alert_quantity;
         $product->sale_price = $request->sale_price;
@@ -163,6 +162,8 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $productdelete = Product::find($id);
+        $productdelete->delete();
+        return redirect('/product')->with('Success!!','Product Deleted');
     }
 }

@@ -63,7 +63,7 @@
                                     <td>
                                         <a href="/expences/{{$result->id}}" class="btn btn-info btn-sm">Details</a>
                                         <a href="/expences/{{$result->id}}/edit" class="btn btn-success btn-sm">Edit</a>
-                                        <a href="#" class="btn btn-danger btn-sm">Delete</a>
+                                        <a href="delete/{{$result->id}}" class="btn btn-danger btn-sm">Delete</a>
 
 
                                     </td>

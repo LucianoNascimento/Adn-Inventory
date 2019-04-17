@@ -62,7 +62,8 @@ class SupplierController extends Controller
      */
     public function show($id)
     {
-        //
+        $result = suppliers::find($id);
+        return view('suppliers.details')->with('result', $result);
     }
 
     /**
@@ -100,6 +101,8 @@ class SupplierController extends Controller
 
     public function destroy($id)
     {
-        //
+        $suppliersdelete = suppliers::find($id);
+        $suppliersdelete->delete();
+        return redirect('/suppliers')->with('Success!!','Supplier Deleted');
     }
 }

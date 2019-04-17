@@ -56,14 +56,14 @@
                             {{Form::label('product_name', 'Product Name')}}
                             {{Form::text('product_name', $result->product_name, ['class' => 'form-control', 'placeholder' => 'Product Name'])}}
                         </div>
-                        <div class="form-group">
+                       {{-- <div class="form-group">
                             {{Form::label('supplier_id', 'Supplier ID')}}
                             {{Form::text('supplier_id', $result->supplier_id, ['class' => 'form-control', 'placeholder' => 'Supplier ID'])}}
-                        </div>
-                       <div class="form-group">
+                        </div>--}}
+                      {{-- <div class="form-group">
                             {{Form::label('cat_id', 'Cat ID')}}
                             {{Form::text('cat_id', $result->cat_id, ['class' => 'form-control', 'placeholder' => 'Cat ID'])}}
-                        </div>
+                        </div>--}}
                         <div class="form-group">
                             {{Form::label('status', 'Status')}}
                             {{Form::select('status',
@@ -74,10 +74,10 @@
                              $result->status,
                              ['class' => 'form-control', 'placeholder' => 'Select Status'])}}
                         </div>
-                     <div class="form-group">
+                    {{-- <div class="form-group">
                          {{Form::label('user_id', 'User ID')}}
                          {{Form::text('user_id', $result->user_id, ['class' => 'form-control', 'placeholder' => 'User ID'])}}
-                     </div>
+                     </div>--}}
 
                       <div class="form-group">
                           {{Form::label('picture', 'Picture')}}

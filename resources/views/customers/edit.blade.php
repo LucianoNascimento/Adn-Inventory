@@ -52,10 +52,10 @@
                     {!! Form::open(['action' => ['CustomerController@update',$result->id], 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
 
                     <div class="box-body">
-                        <div class="form-group">
+                       {{-- <div class="form-group">
                             {{Form::label('user_id', 'User ID')}}
                             {{Form::number('user_id', $result->user_id, ['class' => 'form-control', 'placeholder' => 'User ID'])}}
-                        </div>
+                        </div>--}}
                         <div class="form-group">
                             {{Form::label('name', 'Customer Name')}}
                             {{Form::text('name', $result->name, ['class' => 'form-control', 'placeholder' => 'Customer name'])}}

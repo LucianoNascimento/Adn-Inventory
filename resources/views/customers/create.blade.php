@@ -52,10 +52,7 @@
                     {!! Form::open(['action' => 'CustomerController@store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
 
                     <div class="box-body">
-                        <div class="form-group">
-                            {{Form::label('user_id', 'User ID')}}
-                            {{Form::number('user_id', '', ['class' => 'form-control', 'placeholder' => 'User ID'])}}
-                        </div>
+
                         <div class="form-group">
                             {{Form::label('name', 'Customer Name')}}
                             {{Form::text('name', '', ['class' => 'form-control', 'placeholder' => 'Customer name'])}}

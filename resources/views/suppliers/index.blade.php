@@ -55,10 +55,11 @@
                             </tr>
                             </thead>
                             <tbody>
-
+<?php $i=1; ?>
                             @foreach($results as $result)
+
                                 <tr>
-                                    <td>{{$result->id}}</td>
+                                    <td><?php echo $i++; ?></td>
                                     <td>{{$result->supplier_name}}</td>
                                     <td>{{$result->mobile}}</td>
                                     <td>{{$result->address}}</td>
@@ -69,7 +70,7 @@
                                     <td>
                                         <a href="/suppliers/{{$result->id}}" class="btn btn-info btn-sm">Details</a>
                                         <a href="/suppliers/{{$result->id}}/edit" class="btn btn-success btn-sm">Edit</a>
-                                        <a href="#" class="btn btn-danger btn-sm">Delete</a>
+                                        <a href="delete/{{$result->id}}" class="btn btn-danger btn-sm">Delete</a>
 
 
                                     </td>

@@ -67,7 +67,10 @@
                                     <td>
                                         <a href="/customer/{{$result->id}}" class="btn btn-info btn-sm">Details</a>
                                         <a href="/customer/{{$result->id}}/edit" class="btn btn-success btn-sm">Edit</a>
-                                        <a href="#" class="btn btn-danger btn-sm">Delete</a>
+                                        {!!Form::open(['action' => ['CustomerController@destroy', $result->id], 'method' => 'POST','class' => 'pull-right'])!!}
+                                        {{Form::hidden('_method', 'delete')}}
+                                        {{Form::submit('Delete', ['class' => 'btn btn-danger btn-sm'])}}
+                                        {!!Form::close()!!}
                                     </td>
                                 </tr>
                             @endforeach

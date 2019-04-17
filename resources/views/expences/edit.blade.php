@@ -57,10 +57,10 @@
                             {{Form::text('title', $result->title, ['class' => 'form-control', 'placeholder' => 'Title'])}}
                         </div>
 
-                        <div class="form-group">
+                       {{-- <div class="form-group">
                             {{Form::label('user_id', 'User ID')}}
                             {{Form::number('user_id', $result->user_id, ['class' => 'form-control', 'placeholder' => 'User ID'])}}
-                        </div>
+                        </div>--}}
                         <div class="form-group">
                             {{Form::label('purpose', 'Purpose')}}
                             {{Form::text('purpose', $result->purpose, ['class' => 'form-control', 'placeholder' => 'Purpose'])}}
@@ -76,7 +76,7 @@
 
                     <div class="box-footer">
                         {{Form::hidden('_method', 'PUT')}}
-                        {{Form::submit('Submit', ['class' => 'btn btn-primary form-group'])}}
+                        {{Form::submit('Submit', ['class' => 'btn btn-primary form-control'])}}
                     </div>
                     {!! Form::close() !!}
                 </div>

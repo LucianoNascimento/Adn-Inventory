@@ -33,7 +33,7 @@
     <!-- Main content -->
     <section class="content">
         <div class="row">
-            <div class="col-xs-12">
+            <div class="col-xs-8 col-xs-offset-2">
                 <div class="box">
                     <div class="box-header">
                         <h3 class="box-title">Category View</h3>
@@ -41,29 +41,33 @@
                     <!-- /.box-header -->
                     <div class="box-body">
                         <table id="example1" class="table table-bordered table-striped">
-                            <thead>
+                            <thead class="box">
                             <tr>
                                 <th>Name</th>
+                                <td>{{$result->name}}</td>
+                            </tr>
+                            <tr>
                                 <th>Label</th>
+                                <td>{{$result->label}}</td>
+                            </tr>
+                            <tr>
                                 <th>Status</th>
+                                <td>{{$result->status}}</td>
+                            </tr>
+                            <tr>
                                 <th>User ID</th>
+                                <td>{{$result->user_id}}</td>
+                            </tr>
+                            <tr>
                                 <th>Create At</th>
+                                <td>{{$result->created_at}}</td>
+                            </tr>
+                            <tr>
                                 <th>Update At</th>
+                                <td>{{$result->updated_at}}</td>
                             </tr>
                             </thead>
-                            <tbody>
 
-                                <tr>
-                                    <td>{{$result->name}}</td>
-                                    <td>{{$result->label}}</td>
-                                    <td>{{$result->status}}</td>
-                                    <td>{{$result->user_id}}</td>
-                                    <td>{{$result->created_at}}</td>
-                                    <td>{{$result->updated_at}}</td>
-
-                                </tr>
-
-                            </tbody>
 
                         </table>
                     </div>

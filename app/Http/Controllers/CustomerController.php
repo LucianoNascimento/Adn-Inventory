@@ -26,7 +26,6 @@ class CustomerController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'user_id' => 'required|unique:customers|max:12',
             'name' => 'required|unique:categories|max:35',
             'phone' => 'required',
             'email' => 'required',
@@ -60,7 +59,8 @@ class CustomerController extends Controller
      */
     public function show($id)
     {
-        //
+        $result = Customer::find($id);
+        return view('customers.details')->with('result', $result);
     }
 
     /**
@@ -109,6 +109,13 @@ class CustomerController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $customerdelete = Customer::find($id);
+        $customerdelete->delete();
+        return redirect('/customer')->with('Success!!','Customer Deleted');
     }
+   /* public function destroy($id)
+    {
+        Customer::where('id', $id)->delete();
+        return redirect('/customers');
+    }*/
 }

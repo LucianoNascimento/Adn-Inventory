@@ -52,9 +52,10 @@ class ExpencesController extends Controller
      * @param  \App\expences  $expences
      * @return \Illuminate\Http\Response
      */
-    public function show(expences $expences)
+    public function show($id)
     {
-        //
+        $result = expences::find($id);
+        return view('expences.details')->with('result', $result);
     }
 
     /**
@@ -63,9 +64,9 @@ class ExpencesController extends Controller
      * @param  \App\expences  $expences
      * @return \Illuminate\Http\Response
      */
-    public function edit(expences $expences)
+    public function edit($id)
     {
-        $result = expences::find($expences);
+        $result = expences::find($id);
         return view('expences.edit')->with('result', $result);
     }
 
@@ -76,9 +77,18 @@ class ExpencesController extends Controller
      * @param  \App\expences  $expences
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, expences $expences)
+    public function update(Request $request,$id)
     {
-        //
+        $expence = expences::find($id);
+
+        $expence->title = $request->title;
+        $expence->user_id = 1;
+        $expence->purpose = $request->purpose;
+        $expence->amount = $request->amount;
+
+        $expence->save();
+
+        return redirect('/expences');
     }
 
     /**
@@ -87,8 +97,15 @@ class ExpencesController extends Controller
      * @param  \App\expences  $expences
      * @return \Illuminate\Http\Response
      */
-    public function destroy(expences $expences)
+    public function destroy($id)
     {
-        //
+        $expencedelete = expences::find($id);
+        $expencedelete->delete();
+        return redirect('/expences')->with('Success!!','Expences Deleted');
     }
+    /*public function destroy($id)
+    {
+        expences::where('id', $id)->delete();
+        return redirect('/expences');
+    }*/
 }

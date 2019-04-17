@@ -53,31 +53,26 @@
 
                     <div class="box-body">
                         <div class="form-group">
-                            {{Form::label('invoice_no', 'Invoice No')}}
-                            {{Form::text('name', '', ['class' => 'form-control', 'placeholder' => 'Category name'])}}
+                            {{Form::label('invoice_number', 'Invoice Number')}}
+                            {{Form::text('invoice_number', '', ['class' => 'form-control', 'placeholder' => 'Invoice Number'])}}
                         </div>
 
                         <div class="form-group">
-                            {{Form::label('label', 'Category Label')}}
-                            {{Form::text('label', '', ['class' => 'form-control', 'placeholder' => 'Category Label'])}}
+                            {{Form::label('do_no', 'Due No')}}
+                            {{Form::text('do_no', '', ['class' => 'form-control', 'placeholder' => 'Due Number'])}}
                         </div>
-
-
                         <div class="form-group">
-                            {{Form::label('status', 'Status')}}
-                            {{Form::select('status',
-                            [
-                            'active'=>'Active',
-                            'deactive'=>'De-Active',
-                           ],
-                             null,
-                             ['class' => 'form-control', 'placeholder' => 'Select Status'])}}
+                            {{Form::label('date', 'Date')}}
+                            {{Form::text('date', '', ['class' => 'form-control', 'placeholder' => 'Date'])}}
                         </div>
+
+
+
                     </div>
                     <!-- /.box-body -->
 
                     <div class="box-footer">
-                        {{Form::submit('Submit', ['class' => 'btn btn-primary'])}}
+                        {{Form::submit('Submit', ['class' => 'btn btn-primary form-control'])}}
                     </div>
                     {!! Form::close() !!}
                 </div>
