@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
@@ -24,7 +25,13 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('product.create');
+        $catList = DB::table('categories')->pluck('name','id');
+        $supplierList = DB::table('suppliers')->pluck('supplier_name','id');
+
+        return view('product.create')
+            ->with('catlist',$catList)
+            ->with('suppliers',$supplierList);
+
     }
 
     /**
@@ -35,10 +42,11 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+
         $request->validate([
             'product_name' => 'required|unique:products|max:35',
-           // 'supplier_id' => 'required|max:10',
-           // 'cat_id' => 'required',
+            'supplier_id' => 'required',
+           'cat_id' => 'required',
             'status' => 'required',
            // 'user_id' => 'required',
             'alert_quantity' => 'required',
@@ -70,8 +78,8 @@ class ProductController extends Controller
         $product= new Product();
 
         $product->product_name = $request->product_name;
-        $product->supplier_id = 1;
-        $product->cat_id = 1;
+        $product->supplier_id = $request->supplier_id;
+        $product->cat_id = $request->cat_id;
         $product->status = $request->status;
         $product->user_id = 1;
         $product->picture = $fileNameToStore;
@@ -138,8 +146,8 @@ class ProductController extends Controller
 
         $product= Product::find($id);
         $product->product_name = $request->product_name;
-        $product->supplier_id = 1;
-        $product->cat_id = 1;
+        $product->supplier_id = $request->supplier_id;
+        $product->cat_id = $request->cat_id;
         $product->status = $request->status;
         $product->user_id = 1;
         $product->picture = $fileNameToStore;

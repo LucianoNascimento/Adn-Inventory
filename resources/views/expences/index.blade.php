@@ -63,8 +63,13 @@
                                     <td>
                                         <a href="/expences/{{$result->id}}" class="btn btn-info btn-sm">Details</a>
                                         <a href="/expences/{{$result->id}}/edit" class="btn btn-success btn-sm">Edit</a>
+{{--
                                         <a href="delete/{{$result->id}}" class="btn btn-danger btn-sm">Delete</a>
-
+--}}
+                                        {!!Form::open(['action' => ['ExpencesController@destroy', $result->id], 'method' => 'POST','class' => 'pull-right','class' => 'fa fa-ey'])!!}
+                                        {{Form::hidden('_method', 'delete')}}
+                                        {{Form::submit('Delete', ['class' => 'btn btn-danger btn-sm'])}}
+                                        {!!Form::close()!!}
 
                                     </td>
                                 </tr>

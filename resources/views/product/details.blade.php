@@ -39,13 +39,7 @@
                         <h3 class="box-title">Product Details</h3>
                     </div>
                     <!-- /.box-header -->
-                    <div class="col-lg-3 col-md-3">
-                                        <span class="text-left">
-                                <img src="{{ asset('storage/picture/'.$result->picture) }}" alt="no image"
-                                   class="img-responsive img-thumbnail">
-                                        </span>
-
-                    </div>
+                    <img src="/storage/picture/{{$result->picture}}" alt="no image" class="img-thumbnail" style="width:250px;height:200px; padding:10px 10px;margin:0 auto;display:block">
                     {{--<img src="/picture/{{ $result->picture }}" height="30px" width="30px">--}}
 
                     <div class="box-body">

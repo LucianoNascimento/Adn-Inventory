@@ -80,10 +80,10 @@
                              null,
                              ['class' => 'form-control', 'placeholder' => 'Select Status'])}}
                         </div>
-                        <div class="form-group">
+                        {{--<div class="form-group">
                             {{Form::label('user_id', 'User ID')}}
                             {{Form::number('user_id', '', ['class' => 'form-control', 'placeholder' => 'User ID'])}}
-                        </div>
+                        </div>--}}
                         <div class="form-group">
                             {{Form::label('contact_person', 'Contact Person')}}
                             {{Form::text('contact_person', '', ['class' => 'form-control', 'placeholder' => 'Contact Person'])}}

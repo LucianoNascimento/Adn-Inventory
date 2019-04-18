@@ -77,7 +77,7 @@
                     <!-- /.box-body -->
 
                     <div class="box-footer">
-                        {{Form::submit('Submit', ['class' => 'btn btn-primary'])}}
+                        {{Form::submit('Submit', ['class' => 'btn btn-primary form-control'])}}
                     </div>
                     {!! Form::close() !!}
                 </div>

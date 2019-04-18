@@ -34,10 +34,13 @@
                 <!-- general form elements -->
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Add Product</h3>
+                        <h3 class="box-title">Update Product</h3>
                     </div>
 
-                    @if ($errors->any())
+                    <img src="/storage/picture/{{$result->picture}}" alt="no image" class="img-thumbnail" style="width:250px;height:200px; padding:10px 10px;margin:0 auto;display:block">
+
+
+                @if ($errors->any())
                         <div class="alert alert-danger">
                             <ul>
                                 @foreach ($errors->all() as $error)
@@ -56,14 +59,14 @@
                             {{Form::label('product_name', 'Product Name')}}
                             {{Form::text('product_name', $result->product_name, ['class' => 'form-control', 'placeholder' => 'Product Name'])}}
                         </div>
-                       {{-- <div class="form-group">
+                        <div class="form-group">
                             {{Form::label('supplier_id', 'Supplier ID')}}
-                            {{Form::text('supplier_id', $result->supplier_id, ['class' => 'form-control', 'placeholder' => 'Supplier ID'])}}
-                        </div>--}}
-                      {{-- <div class="form-group">
+                            {{Form::text('supplier_id', $result->supplier_id, ['class' => 'form-control', 'placeholder' => 'Supplier ID','readonly'])}}
+                        </div>
+                       <div class="form-group">
                             {{Form::label('cat_id', 'Cat ID')}}
-                            {{Form::text('cat_id', $result->cat_id, ['class' => 'form-control', 'placeholder' => 'Cat ID'])}}
-                        </div>--}}
+                            {{Form::text('cat_id', $result->cat_id, ['class' => 'form-control', 'placeholder' => 'Cat ID','readonly'])}}
+                        </div>
                         <div class="form-group">
                             {{Form::label('status', 'Status')}}
                             {{Form::select('status',
@@ -74,9 +77,9 @@
                              $result->status,
                              ['class' => 'form-control', 'placeholder' => 'Select Status'])}}
                         </div>
-                    {{-- <div class="form-group">
+                   {{--  <div class="form-group">
                          {{Form::label('user_id', 'User ID')}}
-                         {{Form::text('user_id', $result->user_id, ['class' => 'form-control', 'placeholder' => 'User ID'])}}
+                         {{Form::text('user_id', $result->user_id, ['class' => 'form-control', 'placeholder' => 'User ID','readonly'])}}
                      </div>--}}
 
                       <div class="form-group">

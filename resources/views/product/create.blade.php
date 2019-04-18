@@ -56,14 +56,21 @@
                             {{Form::label('product_name', 'Product Name')}}
                             {{Form::text('product_name', '', ['class' => 'form-control', 'placeholder' => 'Product Name'])}}
                         </div>
-                       {{-- <div class="form-group">
+                        <div class="form-group">
                             {{Form::label('supplier_id', 'Supplier ID')}}
-                            {{Form::text('supplier_id', '', ['class' => 'form-control', 'placeholder' => 'Supplier ID'])}}
-                        </div>--}}
-                       {{-- <div class="form-group">
+                            {{Form::select('supplier_id',
+                                                       $suppliers,
+                                                        null,
+                                                        ['class' => 'form-control'])}}
+                        </div>
+
+                        <div class="form-group">
                             {{Form::label('cat_id', 'Cat ID')}}
-                            {{Form::text('cat_id', '', ['class' => 'form-control', 'placeholder' => 'Cat ID'])}}
-                        </div>--}}
+                            {{Form::select('cat_id',
+                                                       $catlist,
+                                                        null,
+                                                        ['class' => 'form-control'])}}
+                        </div>
                         <div class="form-group">
                             {{Form::label('status', 'Status')}}
                             {{Form::select('status',
