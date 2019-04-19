@@ -49,9 +49,7 @@ class CategoryCtrl extends Controller
 
         $category->save();
 
-        return redirect('/category');
-
-    }
+        return redirect('/category')->with('message','Category successfully created.');}
 
 
     public function show($id)
