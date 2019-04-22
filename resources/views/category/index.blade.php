@@ -1,5 +1,9 @@
 @extends('master.app')
 
+@section('titleContent')
+    YELLOW | Category
+@endsection
+
 @section('cssScript')
 
     <!-- Bootstrap 3.3.7 -->
@@ -27,6 +31,35 @@
     <!-- Google Font -->
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
+    <style>
+        .example-modal .modal {
+            position: relative;
+            top: auto;
+            bottom: auto;
+            right: auto;
+            left: auto;
+            display: block;
+            z-index: 1;
+        }
+
+        .example-modal .modal {
+            background: transparent !important;
+        }
+    </style>
+@endsection
+
+@section('breadcrumb')
+    <section class="content-header">
+        <h1>
+            CATEGORY LIST
+            <small>Control panel</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">Category List</li>
+        </ol>
+    </section>
 @endsection
 
 @section('content')
@@ -35,15 +68,15 @@
         <div class="row">
             <div class="col-xs-12">
                 <div class="box">
-                    <div class="box-header">
-                        <h3 class="box-title">Category List</h3>
+                    <div class="box-header bg-blue-gradient">
+                        <h3 class="box-title"><b>Category List</b></h3>
                     </div>
 
                 {{ Session::get('message')}}
 
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <table id="example1" class="table table-bordered table-striped">
+                        <table id="example1" class="text-center table-hover table bg-danger table-bordered table-striped  ">
                             <thead>
                             <tr>
                                 <th>SL No</th>
@@ -55,21 +88,22 @@
                             </thead>
                             <tbody>
 
+                            <?php $i=1;?>
+
                             @foreach($results as $result)
                                 <tr>
-                                    <td>{{$result->id}}</td>
+                                    <td>{{$i++}}</td>
                                     <td>{{$result->name}}</td>
                                     <td>{{$result->label}}</td>
                                     <td>{{$result->status}}</td>
                                     <td>
-                                        <a href="/category/{{$result->id}}" class="btn btn-info btn-sm">Details</a>
-                                        <a href="/category/{{$result->id}}/edit" class="btn btn-success btn-sm">Edit</a>
+                                        <a href="/category/{{$result->id}}" class="btn btn-info btn-sm"><i class="fa fa-eye"></i></a>
+                                        <a {{--href="/category/{{$result->id}}/edit"--}} class="btn btn-success btn-sm" data-toggle= 'modal', data-target = '#modal-info'><i class="fa fa-edit"></i></a>
 
                                         {!!Form::open(['action' => ['CategoryCtrl@destroy', $result->id], 'method' => 'POST','class' => 'pull-right','class' => 'fa fa-ey'])!!}
                                         {{Form::hidden('_method', 'delete')}}
-                                        {{Form::submit('Delete', ['class' => 'btn btn-danger btn-sm'])}}
+                                        {!! Form::button('<i class="fa fa-trash"></i>',array('class'=>'btn btn-danger btn-sm text-white', 'type'=>'submit')) !!}
                                         {!!Form::close()!!}
-
                                     </td>
                                 </tr>
                             @endforeach
@@ -95,6 +129,82 @@
     </section>
     <!-- /.content -->
 @endsection
+
+<div class="modal modal-info fade" id="modal-info">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Category Update</h4>
+            </div>
+            <div class="modal-body">
+                <section class="content">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <!-- general form elements -->
+                            <div>
+
+                                @if ($errors->any())
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                    <br/>
+                                @endif
+                            <!-- /.box-header -->
+                                <!-- form start -->
+                                {!! Form::open(['action' => ['CategoryCtrl@update', $result->id], 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
+
+                                <div class="box-body">
+                                    <div class="form-group">
+                                        {{Form::label('name', 'Category Name')}}
+                                        {{Form::text('name', $result->name, ['class' => 'form-control', 'placeholder' => 'Category name'])}}
+                                    </div>
+
+                                    <div class="form-group">
+                                        {{Form::label('label', 'Category Label')}}
+                                        {{Form::text('label', $result->label, ['class' => 'form-control', 'placeholder' => 'Category Label'])}}
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        {{Form::label('status', 'Status')}}
+                                        {{Form::select('status',
+                                        [
+                                        'active'=>'Active',
+                                        'deactive'=>'De-Active',
+                                       ],
+                                         $result->status,
+                                         ['class' => 'form-control', 'placeholder' => 'Select Status'])}}
+                                    </div>
+                                </div>
+                                <!-- /.box-body -->
+
+                            </div>
+                            <!-- /.box -->
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+                </section>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-outline"> Save update</button>
+
+                {{Form::hidden('_method', 'PUT')}}
+                {!! Form::close() !!}
+
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
 
 @section('jsScript')
 

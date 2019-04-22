@@ -1,5 +1,9 @@
 @extends('master.app')
 
+@section('titleContent')
+    YELLOW | Product Create
+@endsection
+
 @section('cssScript')
 
     <!-- Bootstrap 3.3.7 -->
@@ -24,6 +28,19 @@
     <!-- Google Font -->
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+@endsection
+
+@section('breadcrumb')
+    <section class="content-header">
+        <h1>
+            PRODUCT CREATE
+            <small>Control panel</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="/product"><i class="fa fa-dashboard"></i> Product list</a></li>
+            <li class="active">Product create</li>
+        </ol>
+    </section>
 @endsection
 
 @section('content')
@@ -94,7 +111,7 @@
                             {{Form::label('alert_quantity', 'Alert Quantity')}}
                             {{Form::number('alert_quantity', '', ['class' => 'form-control', 'placeholder' => 'Alert Quantity'])}}
                         </div>
-                        <div class="form-group">
+                       {{-- <div class="form-group">
                             {{Form::label('sale_price', 'Sale Price')}}
                             {{Form::number('sale_price', '', ['class' => 'form-control', 'placeholder' => 'Sale price'])}}
                         </div>
@@ -106,7 +123,7 @@
                         <div class="form-group">
                             {{Form::label('profit', 'Profit')}}
                             {{Form::number('profit', '', ['class' => 'form-control', 'placeholder' => 'Profit'])}}
-                        </div>
+                        </div>--}}
                     </div>
                     <!-- /.box-body -->
 

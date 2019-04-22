@@ -1,5 +1,9 @@
 @extends('master.app')
 
+@section('titleContent')
+    YELLOW | Category Create
+@endsection
+
 @section('cssScript')
 
     <!-- Bootstrap 3.3.7 -->
@@ -24,6 +28,19 @@
     <!-- Google Font -->
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+@endsection
+
+@section('breadcrumb')
+    <section class="content-header">
+        <h1>
+            CATEGORY CREATE
+            <small>Control panel</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="/"><i class="fa fa-dashboard"></i> Category list</a></li>
+            <li class="active">Category Create</li>
+        </ol>
+    </section>
 @endsection
 
 @section('content')

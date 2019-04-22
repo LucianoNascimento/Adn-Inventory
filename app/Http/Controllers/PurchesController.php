@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\purches;
+use App\suppliers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PurchesController extends Controller
 {
@@ -23,14 +25,11 @@ class PurchesController extends Controller
         return view('purches.index')->with('results', $results);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
-        return view('purches.create');
+        $suppliers = DB::table('suppliers')->pluck('supplier_name', 'id');
+        return view('purches.create')->with('suppliers', $suppliers);
     }
 
     /**
@@ -53,6 +52,20 @@ class PurchesController extends Controller
     public function show(purches $purches)
     {
         //
+    }
+
+    public function addPurchase(){
+
+        $purches = new Purches();
+
+        //todo: Add some column  total, Purchase_invoice
+
+        $purches->product_id =  $_REQUEST['product_id'];
+        $purches->sales_invoice = $_REQUEST['inv_id'];
+        $purches->quantity =$_REQUEST['qty'];
+        $purches->price = $_REQUEST['price'];
+        $purches->total = $_REQUEST['total'];
+        $purches->save();
     }
 
     /**

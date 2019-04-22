@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>AdminLTE 2 | Dashboard</title>
+    <title>@yield('titleContent')</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     @yield('cssScript')
@@ -21,7 +21,7 @@
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
 
-    @include('inc.breadcrumb')
+       @yield('breadcrumb')
 
 
     <!-- Main content -->

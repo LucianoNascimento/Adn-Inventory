@@ -1,5 +1,9 @@
 @extends('master.app')
 
+@section('titleContent')
+    YELLOW | Product
+@endsection
+
 @section('cssScript')
 
     <!-- Bootstrap 3.3.7 -->
@@ -29,18 +33,31 @@
           href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 @endsection
 
+@section('breadcrumb')
+    <section class="content-header">
+        <h1>
+            PRODUCT LIST
+            <small>Control panel</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">Product list</li>
+        </ol>
+    </section>
+@endsection
+
 @section('content')
     <!-- Main content -->
     <section class="content">
         <div class="row">
             <div class="col-xs-12">
                 <div class="box">
-                    <div class="box-header">
+                    <div class="box-header bg-blue-gradient">
                         <h3 class="box-title">Product List</h3>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <table id="example1" class="table table-bordered table-striped">
+                        <table id="example1" class="table text-center table-hover bg-danger table-bordered table-striped">
                             <thead>
                             <tr>
                                 <th>SL No</th>
@@ -48,7 +65,6 @@
                                 <th>Status</th>
                                 <th>Picture</th>
                                 <th>Alert_Quantity</th>
-                                <th>Sales Price</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
@@ -62,17 +78,17 @@
                                     <td>{{$i++}}</td>
                                     <td>{{$result->product_name}}</td>
                                     <td>{{$result->status}}</td>
-                                    <td>{{$result->picture}}</td>
+                                    <td><img width="40px" height="40px" class="img-circle" src="{{ asset('storage/picture/'.$result->picture) }}"></td>
                                     <td>{{$result->alert_quantity}}</td>
-                                    <td>{{$result->sale_price}}</td>
+
                                     <td>
-                                        <a href="/product/{{$result->id}}" class="btn btn-info btn-sm">Details</a>
-                                        <a href="/product/{{$result->id}}/edit" class="btn btn-success btn-sm">Edit</a>
+                                        <a href="/product/{{$result->id}}" class="btn btn-info btn-sm"><i class="fa fa-eye"></i></a>
+                                        <a href="/product/{{$result->id}}/edit" class="btn btn-success btn-sm"><i class="fa fa-edit"></i></a>
                                        {{-- <a href="delete/{{$result->id}}" class="btn btn-danger btn-sm">Delete</a>--}}
 
                                         {!!Form::open(['action' => ['ProductController@destroy', $result->id], 'method' => 'POST','class' => 'pull-right', 'class' =>'fa fa-ey'])!!}
                                         {{Form::hidden('_method', 'delete')}}
-                                        {{Form::submit('Delete', ['class' => 'btn btn-danger btn-sm'])}}
+                                        {!! Form::button('<i class="fa fa-trash"></i>',array('class'=>'btn btn-danger btn-sm text-white', 'type'=>'submit')) !!}
                                         {!!Form::close()!!}
                                     </td>
                                 </tr>
@@ -86,7 +102,7 @@
                                 <th>Status</th>
                                 <th>Picture</th>
                                 <th>Alert_Quantity</th>
-                                <th>Sales Price</th>
+
                                 <th>Action</th>
                             </tr>
                             </tfoot>

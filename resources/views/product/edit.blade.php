@@ -1,5 +1,9 @@
 @extends('master.app')
 
+@section('titleContent')
+    YELLOW | Product Edit
+@endsection
+
 @section('cssScript')
 
     <!-- Bootstrap 3.3.7 -->
@@ -24,6 +28,19 @@
     <!-- Google Font -->
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+@endsection
+
+@section('breadcrumb')
+    <section class="content-header">
+        <h1>
+            PRODUCT EDIT
+            <small>Control panel</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="/product"><i class="fa fa-dashboard"></i>Product list</a></li>
+            <li class="active">Product edit</li>
+        </ol>
+    </section>
 @endsection
 
 @section('content')
@@ -84,13 +101,13 @@
 
                       <div class="form-group">
                           {{Form::label('picture', 'Picture')}}
-                          {{Form::file('picture', ['class' => 'form-control', 'placeholder' => 'Picture'])}}
+                          {{Form::file('picture', ['class' => 'form-control', 'placeholder' => 'Picture','sometime'])}}
                       </div>
                         <div class="form-group">
                              {{Form::label('alert_quantity', 'Alert Quantity')}}
                              {{Form::text('alert_quantity', $result->alert_quantity, ['class' => 'form-control', 'placeholder' => 'Alert Quantity'])}}
                          </div>
-                         <div class="form-group">
+                         {{--<div class="form-group">
                              {{Form::label('sale_price', 'Sale Price')}}
                              {{Form::text('sale_price', $result->sale_price, ['class' => 'form-control', 'placeholder' => 'Sale price'])}}
                          </div>
@@ -102,7 +119,7 @@
                          <div class="form-group">
                              {{Form::label('profit', 'Profit')}}
                              {{Form::text('profit', $result->profit, ['class' => 'form-control', 'placeholder' => 'Profit'])}}
-                         </div>
+                         </div>--}}
                      </div>
                     <!-- /.box-body -->
 

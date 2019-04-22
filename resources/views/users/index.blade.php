@@ -35,29 +35,33 @@
         <div class="row">
             <div class="col-xs-12">
                 <div class="box">
-                    <div class="box-header">
+                    <div class="box-header bg-blue-gradient">
                         <h3 class="box-title">User List</h3>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <table id="example1" class="table table-bordered table-striped">
+                        <table id="example1" class="table text-center table-hover bg-danger table-bordered table-striped">
                             <thead>
                             <tr>
                                 <th>SL No</th>
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Password</th>
+                                <th>Profile</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
                             <tbody>
 
+                            <?php $i=1;?>
+
                             @foreach($results as $result)
                                 <tr>
-                                    <td>{{$result->id}}</td>
+                                    <td>{{$i++}}</td>
                                     <td>{{$result->name}}</td>
                                     <td>{{$result->email}}</td>
                                     <td>{{$result->password}}</td>
+                                    <td>{{$result->prf_img}}</td>
                                     <td>
                                         <a href="/user/{{$result->id}}" class="btn btn-info btn-sm">Details</a>
                                         <a href="/user/{{$result->id}}/edit" class="btn btn-success btn-sm">Edit</a>
@@ -72,8 +76,9 @@
                             <tr>
                                 <th>SL No</th>
                                 <th>Name</th>
-                                <th>Label</th>
-                                <th>Status</th>
+                                <th>Email</th>
+                                <th>Password</th>
+                                <th>Profile</th>
                                 <th>Action</th>
                             </tr>
                             </tfoot>

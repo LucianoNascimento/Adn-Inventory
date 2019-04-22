@@ -4,7 +4,7 @@
         <!-- Sidebar user panel -->
         <div class="user-panel">
             <div class="pull-left image">
-                <img src="{{asset('admin/dist/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">
+                <img src="{{asset('admin/dist/img/me.jpg')}}" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
                 <p>{{ Auth::user()->name }}</p>
@@ -26,28 +26,16 @@
         <ul class="sidebar-menu" data-widget="tree">
             <li class="header">MAIN NAVIGATION</li>
             <li class="active treeview">
-                <a href="#">
-                    <i class="fa fa-dashboard"></i> <span>Dashboard</span>
-                    <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-                </a>
-                <ul class="treeview-menu">
+
+            <li><a href="/"><i class="fa fa-dashboard"></i>Dashboard</a></li>
+
+            {{--   <span class="pull-right-container">
+            --}}{{--  <i class="fa fa-angle-left pull-right"></i>--}}{{--
+            </span>--}}
+
+               {{-- <ul class="treeview-menu">
                     <li class="active"><a href="/"><i class="fa fa-circle-o"></i> Dashboard</a></li>
-                </ul>
-            </li>
-            <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-files-o"></i>
-                    <span>Category</span>
-                    <span class="pull-right-container">
-              <span class="label label-primary pull-right">4</span>
-            </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="/category"><i class="fa fa-circle-o"></i>Category List</a></li>
-                    <li><a href="/category/create"><i class="fa fa-circle-o"></i> Category Create</a></li>
-                </ul>
+                </ul>--}}
             </li>
             <li>
                 <a href="pages/widgets.html">
@@ -59,15 +47,44 @@
             </li>
             <li class="treeview">
                 <a href="#">
-                    <i class="fa fa-pie-chart"></i>
+                    <i class="fa fa-files-o"></i>
+                    <span>Category</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+{{--
+              <span class="label label-primary pull-right">4</span>
+--}}
+            </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="/category"><i class="fa  fa-list-alt"></i>Category List</a></li>
+                    <li><a href="/category/create"><i class="fa fa-plus-square"></i>Add a new Category</a></li>
+                </ul>
+            </li>
+
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-pencil"></i>
                     <span>Customers</span>
                     <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="/customer"><i class="fa fa-circle-o"></i> Customer List</a></li>
-                    <li><a href="/customer/create"><i class="fa fa-circle-o"></i> Add Customer</a></li>
+                    <li><a href="/customer"><i class="fa  fa-list-alt"></i> Customer List</a></li>
+                    <li><a href="/customer/create"><i class="fa fa-plus-square"></i> Add a new Customer</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-shopping-cart"></i> <span>Suppliers</span>
+                    <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="/suppliers"><i class="fa  fa-list-alt"></i>Suppliers List</a></li>
+                    <li><a href="/suppliers/create"><i class="fa fa-plus-square"></i>Add a new Suppliers</a></li>
                 </ul>
             </li>
             <li class="treeview">
@@ -79,100 +96,90 @@
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="/product"><i class="fa fa-circle-o"></i>Product List</a></li>
-                    <li><a href="/product/create"><i class="fa fa-circle-o"></i>Add Product</a></li>
+                    <li><a href="/product"><i class="fa  fa-list-alt"></i>Product List</a></li>
+                    <li><a href="/product/create"><i class="fa fa-plus-square"></i>Add a new Product</a></li>
                 </ul>
             </li>
             <li class="treeview">
                 <a href="#">
-                    <i class="fa fa-edit"></i> <span>Sales</span>
+                    <i class="fa fa-minus-square-o"></i> <span>Expences</span>
                     <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="/sales"><i class="fa fa-circle-o"></i>Sales List</a></li>
-                    <li><a href="/sales/create"><i class="fa fa-circle-o"></i>Add Sales</a></li>
+                    <li><a href="/expences"><i class="fa  fa-list-alt"></i>Expences List</a></li>
+                    <li><a href="/expences/create"><i class="fa fa-plus-square"></i>Add a new Expences</a></li>
                 </ul>
             </li>
             <li class="treeview">
                 <a href="#">
-                    <i class="fa fa-table"></i> <span>Purches</span>
+                    <i class="fa fa-signal"></i> <span>Sales</span>
                     <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="/purches"><i class="fa fa-circle-o"></i>Purches List</a></li>
-                    <li><a href="/purches/create"><i class="fa fa-circle-o"></i>Add Purches</a></li>
+                    <li><a href="/sales"><i class="fa  fa-list-alt"></i>Sales List</a></li>
+                    <li><a href="/sales/create"><i class="fa fa-plus-square"></i>Add a new Sales</a></li>
                 </ul>
             </li>
             <li class="treeview">
                 <a href="#">
-                    <i class="fa fa-table"></i> <span>Expences</span>
+                    <i class="fa fa-money"></i> <span>Purches</span>
                     <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="/expences"><i class="fa fa-circle-o"></i>Expences List</a></li>
-                    <li><a href="/expences/create"><i class="fa fa-circle-o"></i>Add Expences</a></li>
+                    <li><a href="/purches"><i class="fa  fa-list-alt"></i>Purches List</a></li>
+                    <li><a href="/purches/create"><i class="fa fa-plus-square"></i>Add a new Purches</a></li>
                 </ul>
             </li>
+
             <li class="treeview">
                 <a href="#">
-                    <i class="fa fa-table"></i> <span>Sales Invoices</span>
+                    <i class="fa fa-paperclip"></i> <span>Sales Invoices</span>
                     <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="/sales_invoices"><i class="fa fa-circle-o"></i>Sales-invoices List</a></li>
-                    <li><a href="/sales_invoices/create"><i class="fa fa-circle-o"></i>Add Sales-invoices</a></li>
+                    <li><a href="/sales_invoices"><i class="fa  fa-list-alt"></i>Sales-invoices List</a></li>
+                    <li><a href="/sales_invoices/create"><i class="fa fa-plus-square"></i>Add a new Sales-invoices</a></li>
                 </ul>
             </li>
             <li class="treeview">
                 <a href="#">
-                    <i class="fa fa-table"></i> <span>Purches Invoices</span>
+                    <i class="fa fa-list-alt"></i> <span>Purches Invoices</span>
                     <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="/purches_invoices"><i class="fa fa-circle-o"></i>Purches-invoices List</a></li>
-                    <li><a href="/purches_invoices/create"><i class="fa fa-circle-o"></i>Add Purches-invoices</a></li>
+                    <li><a href="/purches_invoices"><i class="fa  fa-list-alt"></i>Purches-invoices List</a></li>
+                    <li><a href="/purches_invoices/create"><i class="fa fa-plus-square"></i>Add a new Purches-invoices</a></li>
                 </ul>
             </li>
+
             <li class="treeview">
                 <a href="#">
-                    <i class="fa fa-table"></i> <span>Suppliers</span>
+                    <i class="fa fa-users"></i> <span>Users</span>
                     <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="/suppliers"><i class="fa fa-circle-o"></i>Suppliers List</a></li>
-                    <li><a href="/suppliers/create"><i class="fa fa-circle-o"></i>Add Suppliers</a></li>
-                </ul>
-            </li>
-            <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-table"></i> <span>Users</span>
-                    <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="/user"><i class="fa fa-circle-o"></i>Sales-invoices List</a></li>
-                    <li><a href="/user/create"><i class="fa fa-circle-o"></i>Add Sales-invoices</a></li>
+                    <li><a href="/users"><i class="fa  fa-list-alt"></i>User List</a></li>
+                    <li><a href="/users/create"><i class="fa fa-plus-square"></i>Add a new User</a></li>
                 </ul>
             </li>
             <li>
-                <a href="pages/calendar.html">
+                <a href="/calender">
                     <i class="fa fa-calendar"></i> <span>Calendar</span>
                     <span class="pull-right-container">
-              <small class="label pull-right bg-red">3</small>
-              <small class="label pull-right bg-blue">17</small>
+             {{-- <small class="label pull-right bg-red">3</small>
+              <small class="label pull-right bg-blue">17</small>--}}
             </span>
                 </a>
             </li>
@@ -205,40 +212,7 @@
                     <li><a href="pages/examples/pace.html"><i class="fa fa-circle-o"></i> Pace Page</a></li>
                 </ul>
             </li>
-            <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-share"></i> <span>Multilevel</span>
-                    <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
-                    <li class="treeview">
-                        <a href="#"><i class="fa fa-circle-o"></i> Level One
-                            <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="#"><i class="fa fa-circle-o"></i> Level Two</a></li>
-                            <li class="treeview">
-                                <a href="#"><i class="fa fa-circle-o"></i> Level Two
-                                    <span class="pull-right-container">
-                      <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                                </a>
-                                <ul class="treeview-menu">
-                                    <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
-                                    <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
-                </ul>
-            </li>
-            <li><a href="https://adminlte.io/docs"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
+
             <li class="header">LABELS</li>
             <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
             <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>

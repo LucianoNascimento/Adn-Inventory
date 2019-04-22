@@ -1,5 +1,9 @@
 @extends('master.app')
 
+@section('titleContent')
+    YELLOW | Expences
+@endsection
+
 @section('cssScript')
 
     <!-- Bootstrap 3.3.7 -->
@@ -29,18 +33,31 @@
           href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 @endsection
 
+@section('breadcrumb')
+    <section class="content-header">
+        <h1>
+            EXPENCES LIST
+            <small>Control panel</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">Expences list</li>
+        </ol>
+    </section>
+@endsection
+
 @section('content')
     <!-- Main content -->
     <section class="content">
         <div class="row">
             <div class="col-xs-12">
                 <div class="box">
-                    <div class="box-header">
+                    <div class="box-header bg-blue-gradient">
                         <h3 class="box-title">Expences List</h3>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <table id="example1" class="table table-bordered table-striped">
+                        <table id="example1" class="table text-center table-hover bg-danger table-bordered table-striped">
                             <thead>
                             <tr>
                                 <th>SL No</th>
@@ -52,23 +69,24 @@
                             </tr>
                             </thead>
                             <tbody>
+                            <?php $i=1;?>
 
                             @foreach($results as $result)
                                 <tr>
-                                    <td>{{$result->id}}</td>
+                                    <td>{{$i++}}</td>
                                     <td>{{$result->title}}</td>
                                     <td>{{$result->user_id}}</td>
                                     <td>{{$result->purpose}}</td>
                                     <td>{{$result->amount}}</td>
                                     <td>
-                                        <a href="/expences/{{$result->id}}" class="btn btn-info btn-sm">Details</a>
-                                        <a href="/expences/{{$result->id}}/edit" class="btn btn-success btn-sm">Edit</a>
+                                        <a href="/expences/{{$result->id}}" class="btn btn-info btn-sm"><i class="fa fa-eye"></i></a>
+                                        <a href="/expences/{{$result->id}}/edit" class="btn btn-success btn-sm"><i class="fa fa-edit"></i></a>
 {{--
                                         <a href="delete/{{$result->id}}" class="btn btn-danger btn-sm">Delete</a>
 --}}
                                         {!!Form::open(['action' => ['ExpencesController@destroy', $result->id], 'method' => 'POST','class' => 'pull-right','class' => 'fa fa-ey'])!!}
                                         {{Form::hidden('_method', 'delete')}}
-                                        {{Form::submit('Delete', ['class' => 'btn btn-danger btn-sm'])}}
+                                        {!! Form::button('<i class="fa fa-trash"></i>',array('class'=>'btn btn-danger btn-sm text-white', 'type'=>'submit')) !!}
                                         {!!Form::close()!!}
 
                                     </td>

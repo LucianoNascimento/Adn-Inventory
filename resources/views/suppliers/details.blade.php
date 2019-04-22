@@ -1,5 +1,9 @@
 @extends('master.app')
 
+@section('titleContent')
+    YELLOW | Suppliers Details
+@endsection
+
 @section('cssScript')
 
     <!-- Bootstrap 3.3.7 -->
@@ -27,6 +31,19 @@
     <!-- Google Font -->
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+@endsection
+
+@section('breadcrumb')
+    <section class="content-header">
+        <h1>
+            SUPPLIER DETAILS
+            <small>Control panel</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="/suppliers"><i class="fa fa-dashboard"></i> Suppliers list</a></li>
+            <li class="active">Suppliers details</li>
+        </ol>
+    </section>
 @endsection
 
 @section('content')

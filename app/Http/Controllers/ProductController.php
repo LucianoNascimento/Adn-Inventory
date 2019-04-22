@@ -55,10 +55,7 @@ class ProductController extends Controller
             'status' => 'required',
            // 'user_id' => 'required',
             'alert_quantity' => 'required',
-            'sale_price' => 'required',
-            'purches_price' => 'required',
-            'profit' => 'required',
-            'picture' => 'image|nullable|max:1999'
+            'picture' => 'image|sometimes|max:1999'
 
         ]);
 
@@ -133,6 +130,10 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'picture' => 'image|sometimes|max:1999'
+
+        ]);
 
         if($request->hasFile('picture')){
             // Get filename with the extension

@@ -18,14 +18,15 @@ class CreatePurchesInvoicesTable extends Migration
             $table->bigInteger('user_id')->index();
             $table->string('invoice_number')->index();
             $table->bigInteger('supplier_id')->index();
-            $table->bigInteger('due_no');
-            $table->timestamp('date');
-            $table->double('discount',10,2);
-            $table->double('discount_value',10,2);
-            $table->double('total',10,2);
-            $table->double('less',10,2);
-            $table->double('sub_total',10,2);
-            $table->double('grand_total',10,2);
+            $table->string('do_no');
+            $table->string('date');
+            $table->double('discount',10,2)->nullable();
+            $table->double('discount_value',10,2)->nullable();
+            $table->double('total',10,2)->nullable();
+            $table->double('less',10,2)->nullable();
+            $table->double('sub_total',10,2)->nullable();
+            $table->double('grand_total',10,2)->nullable();
+            $table->string('status');
             $table->timestamps();
         });
     }

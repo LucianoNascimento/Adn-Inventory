@@ -18,6 +18,11 @@ Route::resource('/product','ProductController');
 Route::resource('/expences','ExpencesController');
 Route::resource('/suppliers','SupplierController');
 Route::resource('/purches','PurchesController');
+Route::get('/add_purchase','PurchesController@addPurchase');
+Route::resource('/users','UserController');
+Route::resource('/sales_invoices','SalesInvoiceController');
+Route::resource('/calender','CalenderController');
+Route::resource('/purchases_invoice','PurchasesInvoiceCtrl');
 
 
 /*Route::get('delete/{id}','CategoryCtrl@destroy');

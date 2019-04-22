@@ -2,25 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
-class UserController extends Controller
+class SalesInvoiceController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     public function index()
     {
-        $results = users::all();
-        return view('users.index')->with('results',$results);
+
     }
 
     /**
@@ -30,7 +24,9 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('users.create');
+        $customerList = DB::table('customers')->pluck('name','id');
+        return view('sales_invoices.create')
+            ->with('customerlist',$customerList);
     }
 
     /**
@@ -41,42 +37,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required|unique:users|max:35',
-            'email' => 'nullable',
-            'password' => 'required',
-            'picture' => 'image|sometimes|max:1999'
-
-        ]);
-
-        if($request->hasFile('prf_img')){
-            // Get filename with the extension
-            $filenameWithExt = $request->file('prf_img')->getClientOriginalName();
-            // Get just filename
-            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-            // Get just ext
-            $extension = $request->file('prf_img')->getClientOriginalExtension();
-            // Filename to store
-            $fileNameToStore= $filename.'_'.time().'.'.$extension;
-            // Upload Image
-            $path = $request->file('prf_img')->storeAs('public/prf_img', $fileNameToStore);
-
-
-        } else {
-            $fileNameToStore = 'noimage.jpg';
-        }
-
-
-        $user= new users();
-
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password = $request->password;
-        $user->prf_img = $fileNameToStore;
-
-        $user->save();
-
-        return redirect('/users');
+        //
     }
 
     /**
