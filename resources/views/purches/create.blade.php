@@ -44,7 +44,7 @@
                 <!-- general form elements -->
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Add Purches</h3>
+                        <h3 class="box-title">Add Invoice</h3>
                     </div>
 
                     @if ($errors->any())
@@ -69,7 +69,7 @@
                         </div>
 
                         <div class="form-group">
-                            {{Form::label('do_no', 'Due No')}}
+                            {{Form::label('do_no', 'Do No')}}
                             {{Form::text('do_no', '', ['class' => 'form-control', 'placeholder' => 'Due Number'])}}
                         </div>
 

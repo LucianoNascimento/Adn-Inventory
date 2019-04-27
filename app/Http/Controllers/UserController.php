@@ -19,7 +19,7 @@ class UserController extends Controller
 
     public function index()
     {
-        $results = users::all();
+        $results = User::all();
         return view('users.index')->with('results',$results);
     }
 
@@ -43,7 +43,7 @@ class UserController extends Controller
     {
         $request->validate([
             'name' => 'required|unique:users|max:35',
-            'email' => 'nullable',
+            'email' => 'email|unique:users|max:255|required',
             'password' => 'required',
             'picture' => 'image|sometimes|max:1999'
 
@@ -67,7 +67,7 @@ class UserController extends Controller
         }
 
 
-        $user= new users();
+        $user= new User();
 
         $user->name = $request->name;
         $user->email = $request->email;

@@ -1,7 +1,7 @@
 @extends('master.app')
 
 @section('titleContent')
-    YELLOW | Customers Edit
+    YELLOW | Purchase Invoice Edit
 @endsection
 
 @section('cssScript')
@@ -37,7 +37,7 @@
             <small>Control panel</small>
         </h1>
         <ol class="breadcrumb">
-            <li><a href="/customer"><i class="fa fa-dashboard"></i> Customer list</a></li>
+            <li><a href="/"><i class="fa fa-dashboard"></i>Home</a></li>
             <li class="active">Purchases Product</li>
         </ol>
     </section>
@@ -47,7 +47,7 @@
     <!-- Main content -->
     <section class="content">
         <div class="row">
-            <div class="col-md-6 col-md-offset-2">
+            <div class="col-md-5">
                 <!-- general form elements -->
                 <div class="box box-success">
                     <div class="box-header with-border">
@@ -66,9 +66,12 @@
                     @endif
                 <!-- /.box-header -->
                     <!-- form start -->
-                    {!! Form::open(['method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
+                    {{--{!! Form::open(['method' => 'POST', 'enctype' => 'multipart/form-data']) !!}--}}
                     <div class="box-body">
 
+                        <div id="msg"></div>
+
+                        {{--TODO: Start Product Purchases--}}
                         <div class="form-group">
                             {{Form::label('product_id', 'Product Name')}}
                             {{Form::select('product_id',
@@ -77,36 +80,45 @@
                              ['class' => 'form-control', 'id'=>'product_id', 'placeholder' => 'Select Product'])}}
                         </div>
 
+                        <input type="text" value="{{$result->invoice_number}}" id="invoice_number" hidden>
 
                         <div class="form-group">
                             {{Form::label('qty', 'Product Qty')}}
-                            {{Form::text('qty', '', ['class' => 'form-control','id'=>'qty', 'onkeyup'=>'multi()', 'placeholder' => 'Customer name'])}}
+                            {{Form::text('qty', '', ['class' => 'form-control','id'=>'qty', 'onkeyup'=>'multi()', 'placeholder' => 'Quantity'])}}
                         </div>
 
                         <div class="form-group">
                             {{Form::label('price', 'Price')}}
-                            {{Form::text('price', '', ['class' => 'form-control','id'=>'price', 'onkeyup'=>'multi()', 'placeholder' => 'Phone'])}}
+                            {{Form::text('price', '', ['class' => 'form-control','id'=>'price', 'onkeyup'=>'multi()', 'placeholder' => 'Price'])}}
+                        </div>
+                        <div class="form-group">
+                            {{Form::label('sales_price', 'Sales Price')}}
+                            {{Form::text('sales_price', '', ['class' => 'form-control','id'=>'s_price', 'placeholder' => 'Sales Price'])}}
                         </div>
 
                         <div class="form-group">
                             {{Form::label('total', 'Total')}}
-                            {{Form::text('total', '', ['class' => 'form-control','id'=>'total', 'readonly'=>'true', 'placeholder' => 'Phone'])}}
+                            {{Form::text('total', '', ['class' => 'form-control','id'=>'total', 'readonly'=>'true', 'placeholder' => 'Total'])}}
                         </div>
                     </div>
                     <!-- /.box-body -->
 
                     <div class="box-footer">
-                        {{Form::button('Submit', ['class' => 'btn btn-primary form-control', 'onclick'=>'addPurchase()'])}}
+                        {{Form::button('Submit', ['class' => 'btn btn-primary form-control', 'id'=>'submit-btn', 'onclick'=>'addPurchase()'])}}
                     </div>
-                    {!! Form::close() !!}
+                    {{--{!! Form::close() !!}--}}
+
+                    {{--TODO: End Product Purchases--}}
+
+                    <div id="res-data"></div>
                 </div>
                 <!-- /.box -->
             </div>
-            <div class="col-md-4">
+            <div class="col-md-6 col-md-offset-1">
                 <!-- general form elements -->
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Update Customer</h3>
+                        <h3 class="box-title">Purches Invoice</h3>
                     </div>
 
                     @if ($errors->any())
@@ -125,35 +137,34 @@
                     <div class="box-body">
                         <div class="form-group">
                             {{Form::label('invoice_number', 'Invoice Number')}}
-                            {{Form::text('invoice_number', $result->invoice_number, ['class' => 'form-control', 'readonly'=>'true', 'placeholder' => 'Customer name'])}}
+                            {{Form::text('invoice_number', $result->invoice_number, ['class' => 'form-control', 'readonly'=>'true', 'placeholder' =>'invoice number'])}}
                         </div>
 
                         <div class="form-group">
                             {{Form::label('total', 'Total')}}
-                            {{Form::text('total', $result->total, ['class' => 'form-control', 'id'=>'totalInv', 'placeholder' => 'Phone'])}}
+                            {{Form::text('total', $result->total, ['class' => 'form-control', 'id'=>'totalInv', 'placeholder' => 'Total'])}}
                         </div>
-
                         <div class="form-group">
                             {{Form::label('discount', '% Discount')}}
-                            {{Form::text('discount', $result->discount, ['class' => 'form-control', 'placeholder' => 'Phone'])}}
+                            {{Form::text('discount', $result->discount, ['class' => 'form-control', 'placeholder' => 'Discount(%)'])}}
                         </div>
 
                         <div class="form-group">
                             {{Form::label('discount_value', 'Discount Value')}}
-                            {{Form::text('discount_value', $result->discount_value, ['class' => 'form-control', 'placeholder' => 'Phone'])}}
+                            {{Form::text('discount_value', $result->discount_value, ['class' => 'form-control', 'placeholder' => 'Discount Value'])}}
                         </div>
                         <div class="form-group">
                             {{Form::label('sub_total', 'Sub Total')}}
-                            {{Form::email('sub_total', $result->sub_total, ['class' => 'form-control', 'placeholder' => 'Email'])}}
+                            {{Form::email('sub_total', $result->sub_total, ['class' => 'form-control', 'placeholder' => 'Sub Total'])}}
                         </div>
                         <div class="form-group">
                             {{Form::label('less', 'less')}}
-                            {{Form::text('less', $result->less, ['class' => 'form-control', 'placeholder' => 'Address'])}}
+                            {{Form::text('less', $result->less, ['class' => 'form-control', 'placeholder' => 'Less'])}}
                         </div>
 
                         <div class="form-group">
                             {{Form::label('grand_total', 'Grand Total')}}
-                            {{Form::text('grand_total', $result->grand_total, ['class' => 'form-control', 'placeholder' => 'Address'])}}
+                            {{Form::text('grand_total', $result->grand_total, ['class' => 'form-control', 'placeholder' => 'Grand Total'])}}
                         </div>
 
                         <div class="form-group">
@@ -206,6 +217,11 @@
             var qty = document.getElementById('qty').value;
             var price = document.getElementById('price').value;
             var totalValue = document.getElementById('total').value;
+            var invNumber = document.getElementById('invoice_number').value;
+            var s_price = document.getElementById('s_price').value;
+
+
+            $("#submit-btn").addClass("disabled");
 
 
             $.ajax({
@@ -217,25 +233,50 @@
                     qty: qty,
                     price: price,
                     total: totalValue,
+                    invNumber: invNumber,
+                    s_price: s_price
                 },
                 success: function (data) {
-                    console.log("qt --- >" + data);
-                    // $("#msg").removeClass("disabled");
-                    // document.getElementById("msg").innerHTML = "Purchases Add";
-                    // document.getElementById("alertMsg").innerHTML = alertMsg;
-                    // CreateTableFromJSON(data)
+
+                    getTotalValue(invNumber);
+
+                    // console.log(data)
+                    document.getElementById("res-data").innerHTML = data;
+                    document.getElementById("msg").innerHTML = "<div class='alert alert-success'> Purchase Success! </div>";
+                    $("#submit-btn").removeClass("disabled");
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+
+                    document.getElementById("msg").innerHTML = "<div class='alert alert-danger'> Purchase Fail ! Try again </div>";
                 }
             });
 
             // console.log(product_id);
         }
 
+        function getTotalValue(invNumber) {
+
+            $.ajax({
+                type: "GET",
+                cache: false,
+                url: "{{ url('get_total') }}",
+                data: {
+                    invNumber: invNumber,
+                },
+                success: function (data) {
+
+                    document.getElementById('totalInv').value = data;
+                }
+            });
+
+        }
+
         function multi() {
             var qty = document.getElementById('qty').value;
             var price = document.getElementById('price').value;
-            var totalInv = document.getElementById('totalInv').value;
+            /* var totalInv = document.getElementById('totalInv').value;*/
             document.getElementById('total').value = qty * price;
-            // document.getElementById('totalInv').value = parseInt(totalInv) + parseInt(qty * price);
+            // document.getElementById('totalInv').value = /*parseInt(totalInv) + parseInt(qty * price)*/ qty * price;
         }
     </script>
 @endsection

@@ -19,10 +19,14 @@ Route::resource('/expences','ExpencesController');
 Route::resource('/suppliers','SupplierController');
 Route::resource('/purches','PurchesController');
 Route::get('/add_purchase','PurchesController@addPurchase');
+Route::get('/get_total','PurchesController@getTotal');
 Route::resource('/users','UserController');
-Route::resource('/sales_invoices','SalesInvoiceController');
 Route::resource('/calender','CalenderController');
+Route::resource('/mailbox','mailboxController');
 Route::resource('/purchases_invoice','PurchasesInvoiceCtrl');
+Route::resource('/sales','SalesController');
+Route::get('/add_sales','SalesController@addPurchase');
+Route::resource('/sales_invoices','SalesInvoiceController');
 
 
 /*Route::get('delete/{id}','CategoryCtrl@destroy');

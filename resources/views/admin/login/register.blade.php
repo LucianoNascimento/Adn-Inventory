@@ -36,7 +36,7 @@
     <div class="register-box-body">
         <p class="login-box-msg">Register a new membership</p>
 
-        <form class="form" method="POST" action="">
+        <form class="form" method="POST" action="" enctype="multipart/form-data">
             {{ csrf_field() }}
 
             <div class="form-group has-feedback {{ $errors->has('name') ? ' has-error' : '' }}">
@@ -55,6 +55,16 @@
                 @if ($errors->has('email'))
                     <span class="help-block">
                                         <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                @endif
+            </div>
+            <div class="form-group has-feedback {{ $errors->has('prf_img') ? ' has-error' : '' }}">
+                <input type="file" class="form-control" name="prf_img">
+                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+
+                @if ($errors->has('prf_img'))
+                    <span class="help-block">
+                                        <strong>{{ $errors->first('prf_img') }}</strong>
                                     </span>
                 @endif
             </div>

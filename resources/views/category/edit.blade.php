@@ -53,7 +53,7 @@
                 <!-- general form elements -->
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Add Category</h3>
+                        <h3 class="box-title">Category Edit</h3>
                     </div>
 
                     @if ($errors->any())

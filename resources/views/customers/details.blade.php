@@ -34,7 +34,7 @@
 @section('breadcrumb')
     <section class="content-header">
         <h1>
-            CUSTOMER DETAIL
+            CUSTOMER DETAILS
             <small>Control panel</small>
         </h1>
         <ol class="breadcrumb">
@@ -45,67 +45,105 @@
 @endsection
 
 @section('content')
-    <!-- Main content -->
     <section class="content">
-        <div class="row">
-            <div class="col-xs-8 col-xs-offset-2">
-                <div class="box">
-                    <div class="box-header">
-                        <h3 class="box-title">Customer Details</h3>
-                    </div>
-                    <!-- /.box-header -->
-                    <div class="box-body">
-                        <table id="example1" class="table table-bordered table-striped">
-                            <thead class="box">
-                            <tr>
-                                <th>User ID</th>
-                                <td>{{$result->user_id}}</td>
-                            </tr>
-                            <tr>
-                                <th>Name</th>
-                                <td>{{$result->name}}</td>
-                            </tr>
-                            <tr>
-                                <th>Phone</th>
-                                <td>{{$result->phone}}</td>
-                            </tr>
-                            <tr>
-                                <th>Email</th>
-                                <td>{{$result->email}}</td>
-                            </tr>
-                            <tr>
-                                <th>Address</th>
-                                <td>{{$result->address}}</td>
-                            </tr>
-                            <tr>
-                                <th>Status</th>
-                                <td>{{$result->status}}</td>
-                            </tr>
-                            <tr>
-                                <th>Amount</th>
-                                <td>{{$result->amount}}</td>
-                            </tr>
-                            <tr>
-                                <th>Create At</th>
-                                <td>{{$result->created_at}}</td>
-                            </tr>
-                            <tr>
-                                <th>Update At</th>
-                                <td>{{$result->updated_at}}</td>
-                            </tr>
-                            </thead>
 
-
-                        </table>
+        <div class="row panel panel-primary" style="margin-top:4%;">
+            <div class="panel-heading lead">
+                <div class="row">
+                    <div class="col-lg-8 col-md-8"><i class="fa fa-users"></i> View Customer Details</div>
+                    <div class="col-lg-4 col-md-4 text-right">
+                        <div class="btn-group text-center">
+                            <a href="/customers" class="btn btn-light btn-default"><i class="fa fa-eye"></i></a>
+                            <a href="/customers/{{$result->id}}/edit" class="btn btn-light btn-default"><i class="fa fa-edit"></i></a>
+                            {!!Form::open(['action' => ['CustomerController@destroy', $result->id], 'method' => 'POST','class' => 'pull-right','class' => 'fa fa-ey'])!!}
+                            {{Form::hidden('_method', 'delete')}}
+                            {!! Form::button('<i class="fa fa-trash"></i>',array('class'=>'btn btn-light btn-default', 'type'=>'submit')) !!}
+                            {!!Form::close()!!}
+                        </div>
                     </div>
-                    <!-- /.box-body -->
                 </div>
-                <!-- /.box -->
             </div>
-            <!-- /.col -->
-        </div>
-        <!-- /.row -->
+
+            <div class="panel-body">
+
+
+
+                <div class="row">
+                    <div class="col-lg-12 col-md-12">
+
+                        <div class="row">
+                            <div class="col-lg-8 col-md-8">
+                                <ul class="nav nav-tabs">
+                                    <li class="active"><a data-toggle="tab" href="#Summery" class="text-primary"><i class="fa fa-indent"></i> <b>Summary</b></a></li>
+                                </ul>
+
+                                <div class="tab-content">
+                                    <div id="Summery" class="tab-pane fade in active">
+
+                                        <div class="table-responsive panel">
+                                            <table class="table">
+                                                <tbody>
+
+                                                <tr>
+                                                    <td class="text-primary"><i class="fa fa-user"></i>User ID</td>
+                                                    <td>{{$result->user_id}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-primary"><i class="fa fa-list-ol"></i>Name</td>
+                                                    <td>{{$result->name}}</td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-primary"><i class="fa fa-book"></i>Phone</td>
+                                                    <td>{{$result->phone}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-primary"><i class="fa fa-inbox"></i> Email</td>
+                                                    <td>{{$result->email}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-primary"><i class="fa fa-home"></i>Address</td>
+                                                    <td>{{$result->address}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-primary"><i class="fa  fa-square-o"></i> Status</td>
+                                                    <td>{{$result->status}}</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td class="text-primary"><i class="fa fa-money"></i>Amount</td>
+                                                    <td>{{$result->amount}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-primary"><i class="fa fa-calendar"></i> Create Date</td>
+                                                    <td>{{ $result->created_at }}</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td class="text-primary"><i class="fa fa-university"></i> Update Date</td>
+                                                    <td>{{ $result->updated_at }}  </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- /.table-responsive -->
+
+            </div>
+
+
     </section>
+
+
+
+    <!-- Main content -->
     <!-- /.content -->
 @endsection
 

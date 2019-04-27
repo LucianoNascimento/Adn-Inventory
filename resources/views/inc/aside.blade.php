@@ -29,22 +29,15 @@
 
             <li><a href="/"><i class="fa fa-dashboard"></i>Dashboard</a></li>
 
-            {{--   <span class="pull-right-container">
-            --}}{{--  <i class="fa fa-angle-left pull-right"></i>--}}{{--
-            </span>--}}
-
-               {{-- <ul class="treeview-menu">
-                    <li class="active"><a href="/"><i class="fa fa-circle-o"></i> Dashboard</a></li>
-                </ul>--}}
             </li>
-            <li>
+           {{-- <li>
                 <a href="pages/widgets.html">
                     <i class="fa fa-th"></i> <span>Widgets</span>
                     <span class="pull-right-container">
               <small class="label pull-right bg-green">new</small>
             </span>
                 </a>
-            </li>
+            </li>--}}
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-files-o"></i>
@@ -121,7 +114,7 @@
                 </a>
                 <ul class="treeview-menu">
                     <li><a href="/sales"><i class="fa  fa-list-alt"></i>Sales List</a></li>
-                    <li><a href="/sales/create"><i class="fa fa-plus-square"></i>Add a new Sales</a></li>
+                    <li><a href="/sales/create"><i class="fa fa-plus-square"></i>Add a new Invoice</a></li>
                 </ul>
             </li>
             <li class="treeview">
@@ -133,7 +126,7 @@
                 </a>
                 <ul class="treeview-menu">
                     <li><a href="/purches"><i class="fa  fa-list-alt"></i>Purches List</a></li>
-                    <li><a href="/purches/create"><i class="fa fa-plus-square"></i>Add a new Purches</a></li>
+                    <li><a href="/purches/create"><i class="fa fa-plus-square"></i>Add Invoice</a></li>
                 </ul>
             </li>
 
@@ -183,33 +176,17 @@
             </span>
                 </a>
             </li>
-            <li>
+            <li class="treeview">
                 <a href="pages/mailbox/mailbox.html">
                     <i class="fa fa-envelope"></i> <span>Mailbox</span>
-                    <span class="pull-right-container">
-              <small class="label pull-right bg-yellow">12</small>
-              <small class="label pull-right bg-green">16</small>
-              <small class="label pull-right bg-red">5</small>
-            </span>
-                </a>
-            </li>
-            <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-folder"></i> <span>Examples</span>
                     <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="pages/examples/invoice.html"><i class="fa fa-circle-o"></i> Invoice</a></li>
-                    <li><a href="pages/examples/profile.html"><i class="fa fa-circle-o"></i> Profile</a></li>
-                    <li><a href="pages/examples/login.html"><i class="fa fa-circle-o"></i> Login</a></li>
-                    <li><a href="pages/examples/register.html"><i class="fa fa-circle-o"></i> Register</a></li>
-                    <li><a href="pages/examples/lockscreen.html"><i class="fa fa-circle-o"></i> Lockscreen</a></li>
-                    <li><a href="pages/examples/404.html"><i class="fa fa-circle-o"></i> 404 Error</a></li>
-                    <li><a href="pages/examples/500.html"><i class="fa fa-circle-o"></i> 500 Error</a></li>
-                    <li><a href="pages/examples/blank.html"><i class="fa fa-circle-o"></i> Blank Page</a></li>
-                    <li><a href="pages/examples/pace.html"><i class="fa fa-circle-o"></i> Pace Page</a></li>
+                    <li><a href="/mailbox"></i>Inbox</a></li>
+                    <li><a href="/mailbox/compose"></i>Compose</a></li>
+                    <li><a href="/mailbox/read">Read</a></li>
                 </ul>
             </li>
 

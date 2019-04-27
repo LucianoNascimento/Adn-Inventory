@@ -19,13 +19,14 @@ class CreateSalesInvoicesTable extends Migration
             $table->string('invoice_number')->index();
             $table->bigInteger('customer_id')->index();
             $table->bigInteger('do_no')->nullable();
-            $table->timestamp('date');
-            $table->double('discount',10,2);
-            $table->double('discount_value',10,2);
-            $table->double('total',10,2);
-            $table->double('less',10,2);
-            $table->double('sub_total',10,2);
-            $table->double('grand_total',10,2);
+            $table->string('date');
+            $table->string('status');
+            $table->double('discount',10,2)->nullable();
+            $table->double('discount_value',10,2)->nullable();
+            $table->double('total',10,2)->nullable();
+            $table->double('less',10,2)->nullable();
+            $table->double('sub_total',10,2)->nullable();
+            $table->double('grand_total',10,2)->nullable();
             $table->timestamps();
         });
     }

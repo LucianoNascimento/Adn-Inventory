@@ -16,13 +16,14 @@ class CreatePurchesTable extends Migration
         Schema::create('purches', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('user_id')->index();
-            $table->bigInteger('supplier_id')->index();
+            $table->bigInteger('supplier_id')->nullable();
             $table->bigInteger('product_id')->index();
-            $table->bigInteger('sales_invoice');
+            $table->bigInteger('purches_invoice');
             $table->string('status');
             $table->integer('quantity');
             $table->double('purches_price',10,2);
             $table->double('sales_price',10,2);
+            $table->double('total',10,2);
             $table->double('profit',10,2);
             $table->timestamps();
         });

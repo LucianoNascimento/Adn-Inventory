@@ -18,7 +18,7 @@ class CreateSalesTable extends Migration
             $table->bigInteger('user_id')->index();
             $table->bigInteger('customer_id')->index();
             $table->bigInteger('product_id')->index();
-            $table->bigInteger('purches_invoices');
+            $table->bigInteger('sales_invoices');
             $table->string('status');
             $table->integer('quantity');
             $table->double('purches_price',10,2);
